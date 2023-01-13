@@ -1,5 +1,4 @@
-import foods from '../foods.json';
-import { useState } from 'react';
+
 import { Card, Col, Button } from 'antd';
 import '../App.css';
 import { useContext } from 'react';
