@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { FoodBoxContext } from './FoodController';
 import foods from '../foods.json'
 
-const Search = () => {
+const Delete = () => {
     const [foodsArray, setFoodsArray] = useContext(FoodBoxContext)
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -13,11 +13,13 @@ const Search = () => {
 
     useEffect(() => {
 
+        console.log(searchTerm)
         if (searchTerm !== '') {
             setFoodsArray(foodsArray.filter(elem => elem.name.toLowerCase().includes(searchTerm.toLowerCase())))
 
         }
         else {
+            console.log('reset')
             setFoodsArray(foods)
         }
 
@@ -26,16 +28,11 @@ const Search = () => {
 
     return (
         <>
-            <h1>search comp</h1>
-            <input
-                type={'text'}
-                placeholder="Search"
-                value={searchTerm}
-                onChange={handleChange}
-            />
+            <h1>delete comp</h1>
+           
         </>
     )
 
 }
 
-export default Search
+export default Delete

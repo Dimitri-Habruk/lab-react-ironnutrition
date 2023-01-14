@@ -1,14 +1,21 @@
 
 import { Card, Col, Button } from 'antd';
 import '../App.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FoodBoxContext } from './FoodController';
+import foods from '../foods.json'
 
 const FoodBox = (props) => {
     const [foodsArray, setFoodsArray] = useContext(FoodBoxContext)
 
- 
     
+    const deleteFood =(e) =>{
+        setFoodsArray((foodsArray) =>
+        foodsArray.filter((elem) => elem.name !== e))
+    }
+    
+
+
     return (
         <div className='allCards'>
             {foodsArray.map(
@@ -26,7 +33,7 @@ const FoodBox = (props) => {
                             <p>
                                 <b>Total Calories: {elem.calories * elem.servings} </b> kcal
                             </p>
-                            <Button type="primary"> Delete </Button>
+                            <Button type="primary" onClick={(e) => deleteFood(elem.name)}> Delete </Button>
                         </Card>
                     </Col>
             )}
